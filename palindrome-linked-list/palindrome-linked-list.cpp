@@ -22,8 +22,6 @@ public:
             head= head->next;
             second_half= second_half -> next;
         }
-        
-        
         return true;
     }
     ListNode* split(ListNode* head)
