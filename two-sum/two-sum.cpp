@@ -6,9 +6,10 @@ public:
         {
             int complement = target - nums[i];
             if(map.find(complement) != map.end())
-                return {map[complement], i};
-            else
-                map[nums[i]] = i;
+            {
+                return {i, map[complement]};
+            }
+            map[nums[i]] = i;
         }
         return {};
     }
