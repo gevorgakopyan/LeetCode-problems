@@ -11,16 +11,16 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        if(head == nullptr) return true;
+        if(head == nullptr)
+            return true;
+        ListNode* first = split(head);
+        ListNode* second = reverseLinkedList(first -> next);
         
-        ListNode* first_half = split(head);
-        ListNode* second_half = reverseLinkedList(first_half->next);
-        
-        while(second_half!= nullptr)
+        while(second != nullptr)
         {
-            if(head->val != second_half -> val) return false;
-            head= head->next;
-            second_half= second_half -> next;
+            if(head->val != second->val) return false;
+            head = head->next;
+            second = second -> next;
         }
         return true;
     }
@@ -30,7 +30,7 @@ public:
         ListNode* walker = head;
         while(runner->next != nullptr && runner->next->next != nullptr)
         {
-            walker = walker->next;
+            walker = walker -> next;
             runner = runner -> next -> next;
         }
         return walker;
@@ -51,3 +51,4 @@ public:
         return prev;
     }
 };
+
