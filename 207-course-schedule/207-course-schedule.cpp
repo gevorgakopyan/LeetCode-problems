@@ -18,26 +18,19 @@ public:
                 q.push(i);
                 prereq[i]--;
             }
-            
-                
         }
         int count = 0;
         while(!q.empty())
         {
             int course = q.front();
             q.pop();
-            //numCourses--;
             count++;
-            //if(catalog[course] != nullptr)
-            //{
             for(auto next : catalog[course])
             {
                 prereq[next]--;
                 if(prereq[next] == 0)
                     q.push(next);
             }
-            //}
-
         }
         return numCourses == count;
     }
