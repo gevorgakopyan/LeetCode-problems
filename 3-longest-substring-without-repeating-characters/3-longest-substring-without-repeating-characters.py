@@ -2,16 +2,11 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         start = 0
         maxSol = 0
-        while start < len(s):
-            currMax = 0
-            char = set()
-            pointer = start
-            while pointer < len(s) and s[pointer] not in char :
-                char.add(s[pointer])
-                currMax += 1
-                pointer += 1
-                
-            maxSol = max(maxSol, currMax)
-            start += 1
+        seen = dict()
+        for charInd in range(len(s)):
+            if s[charInd] in seen:
+                start = max(seen[s[charInd]],start)
+            seen[s[charInd]] = charInd + 1
+            maxSol = max(maxSol, charInd - start + 1)
         return maxSol
                 
