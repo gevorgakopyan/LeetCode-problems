@@ -3,8 +3,8 @@ class Solution:
         res = []
         ans = [0] * len(temperatures)
         for ind, temp in enumerate(temperatures):
-            while res and res[-1][0] < temp:
-                currVal, currInd = res.pop()
+            while res and res[-1][1] < temp:
+                currInd, currVal = res.pop()
                 ans[currInd] = ind - currInd
-            res.append((temp,ind))
+            res.append((ind,temp))
         return ans
